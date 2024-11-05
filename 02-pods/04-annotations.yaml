@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: annotations
+  lables: 
+    trainer: sivakumar
+    course: DevOps
+  annotations:
+    com.roboshop.training.duration: "120 hrs"
+    jenkins.URL: "https://192.168.1.123:8080/login?from=%2F" 
+spec:
+  containers:
+    - name: annotations-pod
+      image: nginx
+      ports:
+        - containerPort: 80

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: nginx-pod
+  namespace : roboshop ## (id namespace not mentioned the pods will be created in default namespace)
+spec:
+  containers:
+    - name: nginx-pod
+      image: nginx:1.14.2
+      ports:
+       - 80 : 80
+       
