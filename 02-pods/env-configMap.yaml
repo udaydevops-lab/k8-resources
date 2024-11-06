@@ -7,6 +7,8 @@ metadata:
 data:
   DB_HOST: "database.example.com"
   DB_PORT: "5432"
+  DB_NAME: "mydatabase"
+  DB_USER: "dbuser"
 
 ---
 apiVersion: v1
@@ -28,10 +30,17 @@ spec:
   containers:
     - name: nginx-pod
       image: nginx
-      envFrom:
+      envFrom:              # defining all the variables at a time from configMap 
         - configMapRef:
             - name: app-config
         - secretRef:
           name: db-secret
+      env:                # defining a specific variable form configMap
+      - name: DB_NAME
+        valueFrom:
+          configMapRef:
+            - name: app-config
+              key: DB_NAME
+
 
 
